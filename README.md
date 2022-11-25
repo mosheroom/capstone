@@ -1,7 +1,8 @@
-# GIMP Plugins
-## Python plugins for GIMP to detect image forgery
+# Image Forgery Scripts
+## Python scripts to detect image forgery
 ### Goals
-- ELA and JPEG ghosting
+- ELA
+- JPEG ghosting
 - Noise analysis
 - Principal component analysis
 - Wavelet transform
