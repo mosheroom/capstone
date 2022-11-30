@@ -5,9 +5,7 @@ import os
 from PIL import Image, ImageChops, ImageEnhance
 
 #TODO
-# better error handling - more descriptive error messages 
-# at specific places in the code
-# add more useful ELA output - make the differences more apparent 
+# better error handling - more descriptive error messages at specific places in the code
 # add color to output
 # check if file already exists
 
@@ -16,6 +14,8 @@ parser.add_argument('--quality', default=95,
                     help='Generates error level analysis for a given photo.')
 parser.add_argument('--imagepath', required=True,
                     help='Path to image')
+parser.add_argument('--outputname', required=True,
+                    help='Desired name for output image')
 parser.add_argument('--checkimg',
                     help='Check if given image is a JPEG image format')
 
@@ -33,7 +33,8 @@ def jpeg_verify(img: str) -> bool:
         else:
             return False
 
-def ela(img: str, quality: int) -> str:
+
+def ela(img: str, quality: int, output: str) -> str:
     '''
     PARAMS:
         img: path to chosen image
@@ -49,7 +50,7 @@ def ela(img: str, quality: int) -> str:
     '''
     given_img = img
     temp_img = f'{img}_temp.jpeg'
-    final_img = f'{img}_ela_{str(quality)}.jpeg'
+    final_img = output
     
     img = Image.open(given_img)
     # saving img as a temporary image at given quality for analysis
@@ -73,7 +74,8 @@ def main():
     args = parser.parse_args()
     path = args.imagepath
     quality = args.quality
-    ela(img = path, quality = quality)
+    output_name = args.outputname
+    ela(img = path, quality = quality, output = output_name)
     #print(f'Image located at {path}')
 
 if __name__ == '__main__':
