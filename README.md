@@ -3,9 +3,9 @@
 ### Goals
 - ELA
 - JPEG ghosting
-- Noise analysis
+- Noise analysis 
 - Principal component analysis
 - Wavelet transform
 - Copy-move detection
 - Quantization fingerprinting
-- Speedgrade tools 
+- Speedgrade tools
