@@ -8,6 +8,7 @@ from PIL import Image, ImageChops, ImageEnhance
 # better error handling - more descriptive error messages at specific places in the code
 # add color to output
 # check if file already exists
+# progress bar
 
 parser = argparse.ArgumentParser(description='Image forgery detection scripts.')
 parser.add_argument('--quality', default=95,
@@ -27,8 +28,8 @@ def jpeg_verify(img: str) -> bool:
         IMG: path to chosen image
     '''
 
-    with Image.open(img) as img:
-        if img.format() == 'JPEG':
+    with Image.open(img) as image:
+        if image.format == 'JPEG':
             return True
         else:
             return False
