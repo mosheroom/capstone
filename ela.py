@@ -5,10 +5,9 @@ import os
 from PIL import Image, ImageChops, ImageEnhance
 
 #TODO
-# better error handling - more descriptive error messages at specific places in the code
-# add color to output
 # check if file already exists
 # progress bar
+# testing functions
 
 parser = argparse.ArgumentParser(description='Image forgery detection scripts.')
 parser.add_argument('--quality', default=95,
@@ -17,8 +16,6 @@ parser.add_argument('--imagepath', required=True,
                     help='Path to image')
 parser.add_argument('--outputname', required=True,
                     help='Desired name for output image')
-parser.add_argument('--checkimg',
-                    help='Check if given image is a JPEG image format')
 
 args = parser.parse_args()
 
@@ -49,6 +46,13 @@ def ela(img: str, quality: int, output: str) -> str:
         print('The given image is not a JPEG. Please provide an image in JPEG format')
         quit()
     '''
+
+    if jpeg_verify(img) == True:
+        pass
+    else:
+        print('Error: Given image is not in a JPEG format')
+        exit()
+
     given_img = img
     temp_img = f'{img}_temp.jpeg'
     final_img = output
