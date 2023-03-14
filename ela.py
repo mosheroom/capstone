@@ -2,11 +2,11 @@
 
 import argparse
 import os
+from time import sleep
 from PIL import Image, ImageChops, ImageEnhance
 
 #TODO
-# check if file already exists
-# progress bar
+# check if file exists
 # testing functions
 
 parser = argparse.ArgumentParser(description='Image forgery detection scripts.')
@@ -58,18 +58,28 @@ def ela(img: str, quality: int, output: str) -> str:
     final_img = output
     
     img = Image.open(given_img)
+    print(f'Creating temporary image')
+    sleep(1)
     # saving img as a temporary image at given quality for analysis
+    print(f'Saving temporary image at {quality} quality')
+    sleep(1)
     img.save(temp_img, 'JPEG', quality=quality)
     img2 = Image.open(temp_img)
     # generating an image by calculating the difference between given_img and temp_img
+    print(f'Calculating difference between original and test image')
+    sleep(1)
     ela_img = ImageChops.difference(img, img2)
     # getting the min/max of the differences calculated above
+    print(f'Calculating extrema of differences calculated')
+    sleep(1)
     extrema = ela_img.getextrema()
     # getting the largest difference
     max_extrema = max(i[1] for i in extrema)
     # getting the scale for enhancement for each pixel
     divisor = 255.0/max_extrema
     # applying enhancements
+    print(f'Generating final image')
+    sleep(1)
     final = ImageEnhance.Brightness(ela_img).enhance(divisor)
     final.save(final_img, 'JPEG')
     final.show()

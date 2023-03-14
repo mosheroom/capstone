@@ -4,10 +4,7 @@ import argparse
 import os
 from PIL import Image, ImageChops, ImageEnhance
 
-#TODO
-# better error handling - more descriptive error messages at specific places in the code
-# add color to output
-# check if file already exists
+
 
 # Exposing Digital Forgeries from JPEG ghosts
 # https://farid.berkley.edu/downloads/publications/tifs09.pdf
