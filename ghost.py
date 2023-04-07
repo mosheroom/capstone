@@ -6,19 +6,18 @@ from PIL import Image, ImageChops, ImageEnhance
 
 
 
+
 # Exposing Digital Forgeries from JPEG ghosts
 # https://farid.berkley.edu/downloads/publications/tifs09.pdf
 
 
 parser = argparse.ArgumentParser(description='Image forgery detection scripts.')
-parser.add_argument('--quality', default=95,
+parser.add_argument('-q', '--quality', default=95,
                     help='Generates error level analysis for a given photo.')
-parser.add_argument('--imagepath', required=True,
+parser.add_argument('-p', '--imagepath', required=True,
                     help='Path to image')
-parser.add_argument('--outputname', required=True,
+parser.add_argument('-on', '--outputname', required=True,
                     help='Desired name for output image')
-parser.add_argument('--checkimg',
-                    help='Check if given image is a JPEG image format')
 
 args = parser.parse_args()
 
